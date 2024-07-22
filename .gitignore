@@ -1,0 +1,14 @@
+# new.txt file will not be tracked
+new.txt 
+
+# all .txt file will not be tracked
+*.txt 
+
+# new.txt file will be tracked
+!new.txt 
+
+# .vscode directory will not be tracked
+.vscode/* 
+
+# extensions.json file will be tracked
+!.vscode/extensions.json 
