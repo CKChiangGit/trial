@@ -1,14 +1,15 @@
 # file directory: .github/workflows/github-actions-demo.yml
 # This is a basic workflow to help you get started with Actions
 
-name: GitHub Actions Demo
+name: GitHub Actions Demo # workflow name
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 permissions: read-all
 
 jobs:
-  Explore-GitHub-Actions: # job name
+  demo-actions: # job ID 
+    name: Explore GitHub Actions # job name (Optional). If no name is provided, the job name will default to the job ID.
     runs-on: ubuntu-latest # job runner (software / CLI to run the jobs)
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
