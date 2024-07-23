@@ -6,7 +6,9 @@ on:
   push:
     branches: [test, main]
   pull_request:
-    branches: [test]
+    branches: [test] # when pulling from test branch to other branches
+
+permissions: read-all # prevent unrestricted access to the repository with "write-all"
 
 # workflow (made up of jobs) runs on trigger
 jobs:
@@ -33,3 +35,9 @@ jobs:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: true # checks all files in the repo. Set to false to only check changed / edited files
+
+          VALIDATE_NATURAL_LANGUAGE: false
+          TEXTLINT_RULES_PATH: ./.textlintrc.json # path to textlint rules
+          
+          VALIDATE_MARKDOWN: false
+          MARKDOWN_LINTER_RULES_PATH: ./.markdownlint.json # path to markdownlint rules
