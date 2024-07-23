@@ -1,4 +1,4 @@
-name: Lint Code Base
+name: Lint Code (EXTRA) FOR README and language
 
 # Trigger for the workflow for push and pull_request events for branches test and main
 # on: [push, pull_request]
@@ -13,7 +13,7 @@ permissions: read-all # prevent unrestricted access to the repository with "writ
 # workflow (made up of jobs) runs on trigger
 jobs:
   build:
-    name: Lint Code Base
+    name: Lint Code (EXTRA) FOR README and language
     runs-on: ubuntu-latest
     permissions:
       contents: read
