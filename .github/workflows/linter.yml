@@ -36,8 +36,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: true # checks all files in the repo. Set to false to only check changed / edited files
 
-          VALIDATE_NATURAL_LANGUAGE: false
-          TEXTLINT_RULES_PATH: ./.textlintrc.json # path to textlint rules
+          VALIDATE_NATURAL_LANGUAGE: true
+          TEXTLINT_RULES_PATH: ./.textlintrc # path to textlint rules
           
           VALIDATE_MARKDOWN: false
-          MARKDOWN_LINTER_RULES_PATH: ./.markdownlint.json # path to markdownlint rules
+          MARKDOWN_LINTER_RULES_PATH: ./.markdownlint-lint.yml # path to markdownlint rules
