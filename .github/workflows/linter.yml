@@ -29,15 +29,25 @@ jobs:
           # list of files that changed across commits
           fetch-depth: 0
       
-      - name: Super-linter
+      - name: Super-linter (MAIN)
         uses: super-linter/super-linter@v6.6.0  # x-release-please-version
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: true # checks all files in the repo. Set to false to only check changed / edited files
 
+          VALIDATE_NATURAL_LANGUAGE: false
+          VALIDATE_MARKDOWN: false
+
+      - name: Super-linter (EXTRA) FOR README and language
+        uses: super-linter/super-linter@v6.6.0  # x-release-please-version
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false # checks all files in the repo. Set to false to only check changed / edited files
+
           VALIDATE_NATURAL_LANGUAGE: true
           TEXTLINT_RULES_PATH: ./.textlintrc # path to textlint rules
           
-          VALIDATE_MARKDOWN: false
+          VALIDATE_MARKDOWN: true
           MARKDOWN_LINTER_RULES_PATH: ./.markdownlint-lint.yml # path to markdownlint rules
