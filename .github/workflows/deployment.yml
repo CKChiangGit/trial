@@ -1,51 +1,57 @@
-# name: Deploy Project Test
-# on: 
-#   pull_request:
-#     types:
-#       - opened # workflow triggers if pull request type is "opened" (default for all new pull requests)
-#     branches:
-#       - main 
-#       - 'dev-*' # * single asterisks allows an additional word (dev-new, dev-this-is-new)
-#       - 'feat/**' # * double asterisk allows any additional words (feat/new, feat/new/button)
-#   workflow_dispatch:
-#   push:
-#     branches:
-#       - main
-#     paths-ignore:
-#       - '.github/workflows/*' # ignore changes to workflow folder
+name: Deploy Project Test
+on: 
+  pull_request:
+    types:
+      - opened # workflow triggers if pull request type is "opened" (default for all new pull requests)
+    branches:
+      - main 
+      - 'dev-*' # * single asterisks allows an additional word (dev-new, dev-this-is-new)
+      - 'feat/**' # * double asterisk allows any additional words (feat/new, feat/new/button)
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/workflows/*' # ignore changes to workflow folder
 
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: read
-#       pull-requests: write
-#     steps:
-#       - name: Get code
-#         uses: actions/checkout@v3
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo "Hello world"
 
-#       # setup-node is an action to set up Node.js in the GitHub Actions runner. Node.js is needed to run JavaScript code in the runner. The action sets up the Node.js version specified in the node-version input. The action also sets up npm (Node Package Manager) and adds it to the PATH.
-#       - name: Install NodeJS 
-#         uses: actions/setup-node@v3 
-#         with:
-#           node-version: 18
-#       - name: Install dependencies
-#         run: npm ci
-#       - name: Run tests
-#         run: npm test
-#   deploy:
-#     needs: test # ensures sequential execution of jobs. Otherwise defaults to parallel execution.
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Get code
-#         uses: actions/checkout@v3
-#       - name: Install NodeJS
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 18
-#       - name: Install dependencies
-#         run: npm ci
-#       - name: Build project
-#         run: npm run build
-#       - name: Deploy
-#         run: echo "Deploying ..."
+  # test:
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: read
+  #     pull-requests: write
+  #   steps:
+  #     - name: Get code
+  #       uses: actions/checkout@v3
+
+  #     # setup-node is an action to set up Node.js in the GitHub Actions runner. Node.js is needed to run JavaScript code in the runner. The action sets up the Node.js version specified in the node-version input. The action also sets up npm (Node Package Manager) and adds it to the PATH.
+  #     - name: Install NodeJS 
+  #       uses: actions/setup-node@v3 
+  #       with:
+  #         node-version: 18
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: Run tests
+  #       run: npm test
+  # deploy:
+  #   needs: test # ensures sequential execution of jobs. Otherwise defaults to parallel execution.
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Get code
+  #       uses: actions/checkout@v3
+  #     - name: Install NodeJS
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: Build project
+  #       run: npm run build
+  #     - name: Deploy
+  #       run: echo "Deploying ..."

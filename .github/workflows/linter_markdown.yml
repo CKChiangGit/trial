@@ -1,17 +1,23 @@
-# name: Lint Code (EXTRA) FOR README and language
+name: Lint Code (EXTRA) FOR README and language
 
-# # Trigger for the workflow for push and pull_request events for branches test and main
-# # on: [push, pull_request]
-# on:
-#   push:
-#     branches: [test, main]
-#   pull_request:
-#     branches: [test] # when pulling from test branch to other branches
+# Trigger for the workflow for push and pull_request events for branches test and main
+# on: [push, pull_request]
+on:
+  push:
+    branches: [test, main]
+  pull_request:
+    branches: [test] # when pulling from test branch to other branches
 
-# permissions: read-all # prevent unrestricted access to the repository with "write-all"
+permissions: read-all # prevent unrestricted access to the repository with "write-all"
 
-# # workflow (made up of jobs) runs on trigger
-# jobs:
+# workflow (made up of jobs) runs on trigger
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo "Hello world"
+
 #   build:
 #     name: Lint Code (EXTRA) FOR README and language
 #     runs-on: ubuntu-latest
