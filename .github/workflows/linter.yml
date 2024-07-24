@@ -38,10 +38,10 @@ jobs:
           VALIDATE_NATURAL_LANGUAGE: false
           VALIDATE_MARKDOWN: false
 
-      ## Moved into its own workflow to avoid affect status check / superbadge
+      # # Moved into its own workflow to avoid affect status check / superbadge
       # - name: Super-linter (EXTRA) FOR README and language
       #   uses: super-linter/super-linter@v6.6.0  # x-release-please-version
-      #   continue-on-error: true # show typos without failing the workflow
+      #   continue-on-error: true # show typos without stopping the workflow
       #   env:
       #     # To report GitHub Actions status checks
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

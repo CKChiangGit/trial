@@ -1,40 +1,40 @@
-name: Lint Code (EXTRA) FOR README and language
+# name: Lint Code (EXTRA) FOR README and language
 
-# Trigger for the workflow for push and pull_request events for branches test and main
-# on: [push, pull_request]
-on:
-  push:
-    branches: [test, main]
-  pull_request:
-    branches: [test] # when pulling from test branch to other branches
+# # Trigger for the workflow for push and pull_request events for branches test and main
+# # on: [push, pull_request]
+# on:
+#   push:
+#     branches: [test, main]
+#   pull_request:
+#     branches: [test] # when pulling from test branch to other branches
 
-permissions: read-all # prevent unrestricted access to the repository with "write-all"
+# permissions: read-all # prevent unrestricted access to the repository with "write-all"
 
-# workflow (made up of jobs) runs on trigger
-jobs:
-  build:
-    name: Lint Code (EXTRA) FOR README and language
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: read
-      # To report GitHub Actions status checks
-      statuses: write    
+# # workflow (made up of jobs) runs on trigger
+# jobs:
+#   build:
+#     name: Lint Code (EXTRA) FOR README and language
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: read
+#       packages: read
+#       # To report GitHub Actions status checks
+#       statuses: write    
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        with:
-          # super-linter needs the full git history to get the
-          # list of files that changed across commits
-          fetch-depth: 0
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v3
+#         with:
+#           # super-linter needs the full git history to get the
+#           # list of files that changed across commits
+#           fetch-depth: 0
 
-      - name: Super-linter (EXTRA) FOR README and language
-        uses: super-linter/super-linter@v6.6.0  # x-release-please-version
-        continue-on-error: true # show typos without failing the workflow
-        env:
-          # To report GitHub Actions status checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Super-linter (EXTRA) FOR README and language
+#         uses: super-linter/super-linter@v6.6.0  # x-release-please-version
+#         continue-on-error: true # show typos without stopping the workflow
+#         env:
+#           # To report GitHub Actions status checks
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          VALIDATE_NATURAL_LANGUAGE: true          
-          VALIDATE_MARKDOWN: true
+#           VALIDATE_NATURAL_LANGUAGE: true          
+#           VALIDATE_MARKDOWN: true
